@@ -6,3 +6,4 @@ venv
 site.db
 .vscode
 static/
+/projectfiles
