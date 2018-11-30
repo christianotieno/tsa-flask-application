@@ -1,6 +1,8 @@
 *.pyc
 *~
+__init__.py
 __pycache__
 venv
+site.db
 .vscode
 /static

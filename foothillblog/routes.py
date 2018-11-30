@@ -1,8 +1,7 @@
-from flask import Flask, render_template, url_for, flash, redirect
-from forms import RegistrationForm, LoginForm
-app = Flask(__name__)
-
-app.config['SECRET_KEY'] = '366d7a723c6ecc87d72a06b3cc3a0edc'
+from flask import render_template, url_for, flash, redirect
+from foothillblog import app
+from foothillblog.forms import RegistrationForm, LoginForm
+from foothillblog.models import User, PostSentiments, RealTweets
 
 
 posts = [
@@ -45,7 +44,7 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@blog.com' and form.password.data == \
+        if form.email.data == 'admin@blog.com' and form.password.data ==\
                 'password':
             flash('You have been logged in!', 'success')
             return redirect(url_for('home'))
@@ -53,7 +52,3 @@ def login():
             flash('Login Unsuccessful. Please check username and password',
                   'danger')
     return render_template('login.html', title='Login', form=form)
-
-
-if __name__ == '__main__':
-    app.run(debug=True, port=5005)
