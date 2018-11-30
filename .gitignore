@@ -5,4 +5,4 @@ __pycache__
 venv
 site.db
 .vscode
-/static
+static/
