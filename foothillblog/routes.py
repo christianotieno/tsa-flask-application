@@ -1,11 +1,12 @@
 import os
 import secrets
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
 from foothillblog import app, db, bcrypt
-from foothillblog.forms import RegistrationForm, LoginForm, UpdateAccountForm
 from foothillblog.models import User, PostSentiments, RealTweets
+from flask import render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
+from foothillblog.forms import RegistrationForm, LoginForm, UpdateAccountForm,\
+    SentimentForm
 
 
 posts = [
@@ -113,3 +114,20 @@ def account():
         'static', filename='profile_pics/' + current_user.image_file)
     return render_template('account.html', title='Account',
                            image_file=image_file, form=form)
+
+
+@app.route("/sentiments/get", methods=['GET', 'POST'])
+@login_required
+def get_sentiments():
+    form = SentimentForm()
+    if form.validate_on_submit():
+        flash('Query Successful!', 'success')
+        return redirect(url_for('sentiments'))
+    return render_template(
+        'get_sentiments.html', title='Get Sentiments', form=form)
+
+
+@app.route("/sentiments")
+@login_required
+def sentiments():
+    return render_template('sentiments.html', title='sentiments')
