@@ -1,10 +1,10 @@
-from foothillblog.models import User
+from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo,\
     ValidationError
+from foothillblog.models import User
 
 
 class RegistrationForm(FlaskForm):
@@ -14,8 +14,8 @@ class RegistrationForm(FlaskForm):
                         validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
-                                     validators=[DataRequired(),
-                                                 EqualTo('password')])
+                                     validators=[DataRequired(), EqualTo(
+                                         'password')])
     submit = SubmitField('Sign Up')
 
     def validate_username(self, username):
@@ -45,8 +45,7 @@ class UpdateAccountForm(FlaskForm):
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
     picture = FileField('Update Profile Picture', validators=[
-                        FileAllowed('jpg', 'png')])
-
+                        FileAllowed(['jpg', 'png'])])
     submit = SubmitField('Update')
 
     def validate_username(self, username):
