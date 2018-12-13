@@ -1,11 +1,12 @@
 from flask_wtf import FlaskForm
-from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField,\
-    IntegerField, TextAreaField
+from foothillblog.models import User
+from flask_wtf.file import FileField, FileAllowed
+from projectfiles.foothill import SentimentAnalysis
 from wtforms.validators import DataRequired, Length, Email, EqualTo,\
     ValidationError
-from foothillblog.models import User
+from wtforms import StringField, PasswordField, SubmitField, BooleanField,\
+    IntegerField, TextAreaField
 
 
 class RegistrationForm(FlaskForm):

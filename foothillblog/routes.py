@@ -2,12 +2,12 @@ import os
 import secrets
 from PIL import Image
 from foothillblog import app, db, bcrypt
+from projectfiles.foothill import SentimentAnalysis
 from foothillblog.models import User, PostSentiments, RealTweets
 from flask import render_template, url_for, flash, redirect, request
 from flask_login import login_user, current_user, logout_user, login_required
 from foothillblog.forms import RegistrationForm, LoginForm, UpdateAccountForm,\
     SentimentForm
-
 
 posts = [
     {
@@ -121,6 +121,11 @@ def account():
 def get_sentiments():
     form = SentimentForm()
     if form.validate_on_submit():
+        sentiments = RealTweets(title=form.searchTerm.data,
+                                content=form.NoOfTerms.data,
+                                author=current_user)
+        db.session.add()
+        db.session.commit()
         flash('Query Successful!', 'success')
         return redirect(url_for('sentiments'))
     return render_template(

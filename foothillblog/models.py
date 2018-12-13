@@ -1,6 +1,7 @@
 from datetime import datetime
-from foothillblog import db, login_manager
 from flask_login import UserMixin
+from foothillblog import db, login_manager
+from projectfiles.foothill import SentimentAnalysis
 
 
 @login_manager.user_loader
