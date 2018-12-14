@@ -31,9 +31,9 @@ def home():
     return render_template('home.html', posts=posts)
 
 
-@app.route("/about")
-def about():
-    return render_template('about.html', title='About')
+@app.route("/report")
+def report():
+    return render_template('report.html', title='Reports')
 
 
 @app.route("/register", methods=['GET', 'POST'])
@@ -127,12 +127,12 @@ def get_sentiments():
         db.session.add()
         db.session.commit()
         flash('Query Successful!', 'success')
-        return redirect(url_for('sentiments'))
+        return redirect(url_for('feeds'))
     return render_template(
         'get_sentiments.html', title='Get Sentiments', form=form)
 
 
-@app.route("/sentiments")
+@app.route("/feeds")
 @login_required
-def sentiments():
-    return render_template('sentiments.html', title='sentiments')
+def feeds():
+    return render_template('feeds.html', title='Feeds')

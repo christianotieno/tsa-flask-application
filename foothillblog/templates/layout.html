@@ -11,24 +11,24 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
 
     {% if title %}
-        <title>Foothill Blog - {{ title }}</title>
+        <title>Foothill - {{ title }}</title>
     {% else %}
-        <title>Foothill Blog</title>
+        <title>Foothill</title>
     {% endif %}
 </head>
 <body>
     <header class="site-header">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-          <a class="navbar-brand mr-4" href="/">Foothill Blog</a>
+          <a class="navbar-brand mr-4" href="/">Foothill</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
-              <a class="nav-item nav-link" href="{{ url_for('sentiments') }}">Sentiments</a>
-              <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+              <a class="nav-item nav-link" href="{{ url_for('feeds') }}">Feeds</a>
+              <a class="nav-item nav-link" href="{{ url_for('report') }}">Reports</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
@@ -65,9 +65,9 @@
             <p class='text-muted'>Latest Updates on Recent Sentiments Queries.
               <ul class="list-group">
                 <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{{ url_for('home') }}">Back Home</a></li>
-                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{{ url_for('sentiments') }}">Latest Sentiments</a></li>
-                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{{ url_for('sentiments') }}">Graphs and Pie Charts</a></li>
-                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{{ url_for('about') }}">Login/SignUp for Twitter</a></li>
+                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{{ url_for('feeds') }}">Latest Sentiments</a></li>
+                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{{ url_for('feeds') }}">Graphs and Pie Charts</a></li>
+                <li class="list-group-item list-group-item-light"><a class="nav-item nav-link" href="{{ url_for('report') }}">Login/SignUp for Twitter</a></li>
               </ul>
             </p>
           </div>
